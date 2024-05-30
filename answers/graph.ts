@@ -47,7 +47,7 @@ export class PriorityQueue<T> {
 		this.__sort();
 	}
 
-	pull= (): { value: T, priority: number } | undefined => this.__values.shift();
+	pull = (): { value: T, priority: number } | undefined => this.__values.shift();
 
 	private __sort = () => this.__values.sort((a, b) => a.priority - b.priority);
 }
