@@ -4,25 +4,26 @@ import { LookupData, User } from '../data/lookup.data.js';
 
 
 class LookupTable {
-	private __values: User | null[]; // the table
+	private __values: User | null[];
 	constructor(private __size: number) {
 		this.__values = new Array(this.__size).fill(null); // initialize to null
 	}
 
-	peek() { // return the whole table back
-		// TODO 
-	}
+	peek() { return this.__values; } // return the whole list back
 
 	put(user: User) { // insert a new element into the table
-		// TODO
+		const index = this.__hash(user.phone);
+		this.__values[index] = user;
 	}
 
-	get(phone: string) { // fetch an element from the table
-		// TODO
+	get(phone: string): User { // fetch an element from the table
+		const index = this.__hash(phone);
+		return this.__values[index];
 	}
 
 	del(phone: string) { // delete an element from the table (set the element to null)
-		// TODO
+		const index = this.__hash(phone);
+		this.__values[index] = null;
 	}
 
 	private __hash(data: string): number { // simple hash function, get char code at each char and then modulo by size of array
@@ -42,13 +43,20 @@ export class Lookup extends Runner {
 		const mockData = LookupData.users();
 		const lookupTable = new LookupTable(mockData.length);
 		
-		// insert elements here
+		for (const user of mockData) {
+			lookupTable.put(user);
+		}
 
 		console.log('elements after insert:', lookupTable.peek());
 
-		// get elements here
+		for (const user of mockData) {
+			const element = lookupTable.get(user.phone);
+			console.log('retrieved:', element.phone);
+		}
 
-		// delete elements here
+		for (const user of mockData) {
+			lookupTable.del(user.phone);
+		}
 		
 		console.log('lookup table after delete:', lookupTable.peek());
 		return true;

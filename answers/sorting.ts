@@ -7,14 +7,36 @@ export class MergeSort {
 	// this section should recursively split the elements in the middle
 	// this is the divide portion of merge sort
 	static sort(elements: number[]): number[] {
-		// TODO
-		return [];
+		if (elements.length <= 1) return elements;
+
+		const mid = Math.floor(elements.length / 2);
+		const left = elements.slice(0, mid);
+		const right = elements.slice(mid);
+
+		return MergeSort.merge(MergeSort.sort(left), MergeSort.sort(right));
 	}
 
 	// this section should sort + merge the incoming arrays (left and right)
 	private static merge(left: number[], right: number[]): number[] {
-		// TODO
-		return [];
+		const result: number[] = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+			if (left[leftIndex] < right[rightIndex]) {
+				result.push(left[leftIndex]);
+				leftIndex++;
+			} else {
+				result.push(right[rightIndex]);
+				rightIndex++;
+			}
+    }
+
+    return [ 
+			...result,
+			...left.slice(leftIndex),
+			...right.slice(rightIndex)
+		];
 	}
 }
 
@@ -26,7 +48,8 @@ export class Sorting extends Runner {
 		const mockData = SortingData.list();
 		console.log('unsorted data:', mockData);
 
-		// sort here and log the sorted results after
+		const sorted = MergeSort.sort(mockData);
+		console.log('sorted:', sorted);
 		
 		return true;
 	}

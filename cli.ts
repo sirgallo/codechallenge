@@ -1,52 +1,38 @@
-import { writeFileSync } from 'fs';
 import { join } from 'path';
 
 import { LogProvider } from './core/log/LogProvider.js';
 import { CryptoUtil } from './core/utils/Crypto.js';
 import { TimerUtil } from './core/utils/Timer.js';
-import { CLIRunnerOpts, CLIRunnerResults, DEFAULT_RESULTS_FOLDER } from './types.js';
+import { CLIRunnerOpts, CLIRunnerResults } from './types.js';
 
 
-export abstract class Runner<T> {
+export abstract class Runner {
   protected zLog = new LogProvider('cli');
   constructor() {}
 
-  async start(): Promise<CLIRunnerResults<T>> {
+  async start(): Promise<CLIRunnerResults> {
     try {
       const timer = new TimerUtil('cli');
       
       timer.start('cli.run');
-      const results = await this.runIO();
+      const results = await this.run();
       timer.stop('cli.run');
 
       const { start, stop, elapsed } = timer.getResults('cli.run');
-      return { timestamp: start.toISOString(), durationInMs: elapsed, results }
+      return { timestamp: start.toISOString(), durationInMs: elapsed }
     } catch (err) { throw err; }
   }
 
-  abstract runIO(): Promise<T>;
+  abstract run(): Promise<boolean>;
 }
 
 
-export const cliRunner = async <T>(opts: CLIRunnerOpts<T>) => {
-  const zLog = new LogProvider('io --> sight.io.runner');
+export const cliRunner = async (opts: CLIRunnerOpts) => {
+  const zLog = new LogProvider('cli --> runner');
 
-  const writeToDisk = (results: CLIRunnerResults<T>) => {
-    const now = new Date().toISOString();
-    const randHash = CryptoUtil.generateHash({ data: now, algorithm: 'sha256', format: 'hex' })
-    const filename = join(DEFAULT_RESULTS_FOLDER, `${(randHash as string)}_${now}.results`);
-
-    zLog.debug(`results output filename: ${filename}`);
-    writeFileSync(filename, JSON.stringify(results));
-  };
-  
   try {
     const results = await opts.runner.start();
     zLog.info(`results --> ${JSON.stringify(results, null, 2)}`);
-    if (opts.saveResultsToDisk) { 
-      zLog.debug('writing results to disk...');
-      writeToDisk(results);
-    }
 
     zLog.info('FINISHED');
     process.exit(0);
