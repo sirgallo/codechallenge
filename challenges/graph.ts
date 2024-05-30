@@ -27,15 +27,14 @@ class PriorityQueue<T> {
 
 export class Dijkstra {
 	static shortestPath(graph: Graph, startVertex: string, endVertex: string): string[] { //optimize to solve for the max allowed to be in the knapsack
-		const distances = {};
-    const queue = new PriorityQueue<string>();
-    const previous = {};
+		const queue = new PriorityQueue<string>();	
+		const distances: { [vertex: string]: number } = {}; // a map of the vertices and distances
+    const previous: { [vertex: string]: string | null }  = {}; // a map of previously visited vertices
     const path: string[] = []; // to return the shortest path
-    let smallest: string | undefined = undefined;
+    let smallest: string | null = null;
 
     for (let vertex in graph) { // initialize the distances and queue
 			// TODO
-			previous[vertex] = null;
     }
 
     while (queue.values.length) { // process the queue
