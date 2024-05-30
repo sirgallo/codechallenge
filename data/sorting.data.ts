@@ -2,7 +2,7 @@ import { randomBytes } from 'crypto';
 
 
 export class SortingData {
-	static list = () => {
+	static list = (): number[] => {
 		return SortingData.generateRandomNumbers(100);
 	}
 
