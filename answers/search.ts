@@ -4,7 +4,7 @@ import { QuickSort } from './sorting.js';
 
 
 /*
-binary search:
+BinarySearch:
   find the target in a sorted array by repeatedly dividing the search interval in half
 
   example array:

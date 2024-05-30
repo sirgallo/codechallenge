@@ -1,6 +1,6 @@
 import { Runner, cliRunner } from '../cli.js';
 import { LogProvider } from '../core/log/LogProvider.js';
-import { KnapsackData } from '../data/dynamic.data.js';
+import { DynamicData } from '../data/dynamic.data.js';
 
 
 /*
@@ -25,7 +25,7 @@ export class DynamicRunner extends Runner {
 	}
 
 	private __knapsack() {
-		const { weights, values, capacity } = KnapsackData.get();
+		const { weights, values, capacity } = DynamicData.knapsack();
 		this.__zLog.debug(`weights: ${weights}, values: ${values}, capacity: ${capacity}`);
 	
 		const maxValue = Knapsack.solve(weights, values, capacity);

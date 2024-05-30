@@ -4,7 +4,7 @@ import { SortingData } from '../data/sorting.data.js';
 
 
 /*
-mergesort:
+MergeSort:
 	divide into smaller and smaller lists:
   								[  8 	 3   5   2   4   1   6   7 ]
  
@@ -64,7 +64,7 @@ export class MergeSort {
 
 
 /*
-quicksort:
+QuickSort:
   choose a pivot, partition into smaller and larger lists:
                 [  8 	 3   5   2   4   1   6   7 ]
 

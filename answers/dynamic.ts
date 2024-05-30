@@ -1,10 +1,10 @@
 import { Runner, cliRunner } from '../cli.js';
 import { LogProvider } from '../core/log/LogProvider.js';
-import { KnapsackData } from '../data/dynamic.data.js'; // Assume this provides weights, values, and capacity
+import { DynamicData } from '../data/dynamic.data.js'; // Assume this provides weights, values, and capacity
 
 
 /*
-0/1 knapsack problem:
+0/1 Knapsack Problem:
   determine the maximum value that can be obtained from a set of items, each with a weight and value, without exceeding the knapsack's capacity.
 
   steps:
@@ -131,7 +131,7 @@ export class DynamicRunner extends Runner {
 	}
 
 	private __knapsack() {
-		const { weights, values, capacity } = KnapsackData.get();
+		const { weights, values, capacity } = DynamicData.knapsack();
 		this.__zLog.debug(`weights: ${weights}, values: ${values}, capacity: ${capacity}`);
 	
 		const maxValue = Knapsack.solve(weights, values, capacity);

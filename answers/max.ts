@@ -3,7 +3,7 @@ import { SortingData } from '../data/sorting.data.js';
 
 
 /*
-linear search:
+LinearSearch:
   find the target in an array by iterating through each element until the target is found
 
   example array:
