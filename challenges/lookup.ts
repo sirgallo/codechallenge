@@ -6,7 +6,7 @@ import { LookupData, User } from '../data/lookup.data.js';
 class LookupTable {
 	private __values: User | null[]; // the table
 	constructor(private __size: number) {
-		this.__values = new Array(this.__size).fill(null); // initialize to null
+		this.__values = new Array(this.__size).fill(null); // initialize to null, creates an empty array
 	}
 
 	peek() { // return the whole table back

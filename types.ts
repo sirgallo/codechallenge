@@ -1,6 +1,3 @@
-import { homedir } from 'os';
-import { join } from 'path';
-
 import { Runner } from './cli.js';
 
 

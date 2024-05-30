@@ -1,6 +1,26 @@
 import { Runner, cliRunner } from '../cli.js';
 import { SortingData } from '../data/sorting.data.js';
 
+
+
+/*
+mergesort:
+	divide into smaller and smaller lists:
+  								[  8 	 3   5   2   4   1   6   7 ]
+ 
+							  [ 8	  3	  5   2 ]  |  [ 4   1   6   7 ]
+
+			   [ 8	  3 ]  |  [ 5   2 ]  |  [ 4   1 ]  |  [ 6   7 ]
+
+ sort + merge lists back into one:
+					[ 3   8 ]  |  [ 2   5 ]  |  [ 1   4 ]  |  [ 6   7 ]
+
+							  [	2   5   3   8 ]  |  [ 1   4   6   7 ]
+
+								   [ 1   2   3   4   5   6   7   8 ]
+
+	time complexity is O(nlogn)
+*/
 export class MergeSort {
 	constructor() {}
 
@@ -10,6 +30,8 @@ export class MergeSort {
 		if (elements.length <= 1) return elements;
 
 		const mid = Math.floor(elements.length / 2); // calculate mid point
+
+		// split the list into both left and right at the midpoint
 		const left = elements.slice(0, mid);
 		const right = elements.slice(mid);
 
@@ -30,7 +52,7 @@ export class MergeSort {
 				result.push(right[rightIndex]); // same but opposite
 				rightIndex++; // increase total taken from right
 			}
-    }
+		}
 
 		return [ ...result, ...left.slice(leftIndex), ...right.slice(rightIndex) ]; // combine the result, then left and finally right, in that order (ascending)
 	}
@@ -40,7 +62,7 @@ export class MergeSort {
 export class Sorting extends Runner {
   constructor() { super(); }
 
-	async run() {	// use the merge sort implementatrandomNumbersion to sort the mock data
+	async run() {	// use the merge sort implementation to sort the mock data
 		const mockData = SortingData.list();
 		console.log('unsorted data:', mockData);
 

@@ -3,6 +3,10 @@ import { LogProvider } from '../core/log/LogProvider.js';
 import { LookupData, User } from '../data/lookup.data.js';
 
 
+
+// ========================================= DATA STRUCTURE FROM SCRATCH
+
+
 class LookupTable { // this is a hash table implementation
 	private __values: User | null[]; // this is a pre-allocated array where elements are added in to their hashed index
 	constructor(private __size: number) {
@@ -35,11 +39,19 @@ class LookupTable { // this is a hash table implementation
 }
 
 
+// =========================================
+
+
 export class Lookup extends Runner {
 	private __zLog = new LogProvider(Lookup.name);
 	constructor() { super(); }
 
-	async run() {
+	async run() { // run both
+		this.__implemented();
+		return this.__jsLang();
+	}
+
+	private __implemented() { // this method is for the answer if you were to implement the data structure yourself
 		const mockData = LookupData.users();
 		const lookupTable = new LookupTable(mockData.length);
 		
@@ -58,7 +70,30 @@ export class Lookup extends Runner {
 			lookupTable.del(user.phone);
 		}
 		
-		console.log('lookup table after delete:', lookupTable.peek());
+		console.log('lookup table after deletion:', lookupTable.peek());
+		return true;
+	}
+
+	private __jsLang() { // this method would be if you just used javascripts built in Object type (recommended)
+		const mockData = LookupData.users();
+		const lookupTable = {};
+
+		for (const user of mockData) {
+			lookupTable[user.phone] = user; 
+		}
+
+		console.log('elements after insert:', Object.entries(lookupTable)); // Object is a a built in JS type, with many provided built in functions
+
+		for (const user of mockData) {
+			const element = lookupTable[user.phone];
+			console.log('retrieved:', element.phone);
+		}
+
+		for (const user of mockData) {
+			delete lookupTable[user.phone];
+		}
+
+		console.log('lookup table after deletions:', lookupTable);
 		return true;
 	}
 }

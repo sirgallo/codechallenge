@@ -48,8 +48,7 @@ Runners, when executed, will perform the following:
 
 To run a runner, first build the project (assuming you are at the root directory of the project):
 ```bash
-cd ./backend
-npm ci // run this if you need node installs
+npm ci // run this if you need node installs (you will on first time running)
 npm run build:all
 ```
 
