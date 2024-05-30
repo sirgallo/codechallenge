@@ -18,6 +18,10 @@ export class Max extends Runner {
 		console.log('elements:', elements)
 
 		const index = LinearSearch.findMaxIndex(elements);
+		if (index === -1) {
+			this.zLog.warn('empty input');
+			return true;
+		}
 
 		this.zLog.debug(`index: ${index}, selected: ${elements[index]}`);
 		return true;

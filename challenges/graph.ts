@@ -39,7 +39,7 @@ export class Dijkstra {
 
     while (queue.values.length) { // process the queue
 			const node = queue.pull();
-			if (!node) break;
+			if (! node) break;
       
 			smallest = node.value;
 			// TODO

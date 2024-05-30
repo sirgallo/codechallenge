@@ -72,8 +72,8 @@ export class Search extends Runner {
 
 		const sortedElements = QuickSort.sort(elements);
 		console.log('sorted elements:', sortedElements)
-		const index = BinarySearch.search(sortedElements, target)
 		
+		const index = BinarySearch.search(sortedElements, target)
 		if (index === -1) { 
 			this.zLog.warn(`target element not found in list: ${target}`);
 			return true;
