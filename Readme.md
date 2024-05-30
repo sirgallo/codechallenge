@@ -5,7 +5,7 @@
 
 ## overview
 
-`code challenges` is a utility module that makes it straightforward to write one of scripts/code challenges and create mock data for them. The directory is separated into two main parts, the `./data` and `./runner` directories.
+`code challenges` is a utility module that makes it straightforward to write scripts/code challenges and create mock data for them. The directory is separated into two main parts, the `./data` and `./challenges` directories.
 
 `./data` handles data for challenges
 Each data file should export a data class that includes static methods with associated mock data.
