@@ -33,8 +33,7 @@ class MyCode extends Runner {
 
 
 cliRunner({  // use the included utility to run the above processor
-  run: new MyIORunner(),
-  saveResultsToDisk: false // this is optional
+  run: new MyCode()
 });
 ```
 
