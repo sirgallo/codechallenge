@@ -7,7 +7,8 @@
 
 `code challenges` is a utility module that makes it straightforward to write scripts/code challenges and create mock data for them. The directory is separated into two main parts, the `./data` and `./challenges` directories.
 
-`./data` handles data for challenges
+`./data` handles data for challenges.
+
 Each data file should export a data class that includes static methods with associated mock data.
 
 `./challenges` handles executing challenges.
@@ -28,7 +29,6 @@ class MyCode extends Runner {
   }
 
 	// any additional methods can be added as private members
-
   private __myMethod(): boolean {
     const sum = 2 + 2;
     return sum === 4;

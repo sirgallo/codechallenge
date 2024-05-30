@@ -114,11 +114,11 @@ export class Dijkstra {
 	static shortestPath(graph: Graph, startVertex: string, endVertex: string): string[] { //optimize to solve for the max allowed to be in the knapsack
 		const queue = new PriorityQueue<string>();	
 		const distances: { [vertex: string]: number } = {}; // a map of the vertices and distances
-    const previous: { [vertex: string]: string | null }  = {}; // a map of previously visited vertices
-    const path: string[] = []; // to return the shortest path
-    let smallest: string | null = null;
+		const previous: { [vertex: string]: string | null }  = {}; // a map of previously visited vertices
+		const path: string[] = []; // to return the shortest path
+		let smallest: string | null = null;
 
-    for (let vertex in graph) { // initialize the distances and queue
+		for (let vertex in graph) { // initialize the distances and queue
 			if (vertex === startVertex) {
 				distances[vertex] = 0;
 				queue.push(vertex, 0);
@@ -128,12 +128,12 @@ export class Dijkstra {
 			}
 
 			previous[vertex] = null;
-    }
+		}
 
-    while (queue.values.length) { // process the queue
+		while (queue.values.length) { // process the queue
 			const node = queue.pull();
 			if (! node) break;
-      
+			
 			smallest = node.value;
 			if (smallest === endVertex) {
 				while (previous[smallest as string]) { // build the path
@@ -154,7 +154,7 @@ export class Dijkstra {
 					}
 				}
 			}
-    }
+		}
 
 		return smallest ? [ ...path, smallest ].reverse() : path;
 	}
