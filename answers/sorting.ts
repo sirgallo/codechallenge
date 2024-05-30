@@ -9,11 +9,11 @@ export class MergeSort {
 	static sort(elements: number[]): number[] {
 		if (elements.length <= 1) return elements;
 
-		const mid = Math.floor(elements.length / 2);
+		const mid = Math.floor(elements.length / 2); // calculate mid point
 		const left = elements.slice(0, mid);
 		const right = elements.slice(mid);
 
-		return MergeSort.merge(MergeSort.sort(left), MergeSort.sort(right));
+		return MergeSort.merge(MergeSort.sort(left), MergeSort.sort(right)); // recursively sort, splitting elements down and then sorting back up to root
 	}
 
 	// this section should sort + merge the incoming arrays (left and right)
@@ -21,17 +21,18 @@ export class MergeSort {
 		const result: number[] = [];
 		let leftIndex = 0;
 		let rightIndex = 0;
+		
 		while (leftIndex < left.length && rightIndex < right.length) {
-			if (left[leftIndex] < right[rightIndex]) {
+			if (left[leftIndex] < right[rightIndex]) { // if left is less than right, push left as it is smaller
 				result.push(left[leftIndex]);
-				leftIndex++;
+				leftIndex++; // increase total taken from left
 			} else {
-				result.push(right[rightIndex]);
-				rightIndex++;
+				result.push(right[rightIndex]); // same but opposite
+				rightIndex++; // increase total taken from right
 			}
     }
 
-    return [ ...result, ...left.slice(leftIndex), ...right.slice(rightIndex) ];
+		return [ ...result, ...left.slice(leftIndex), ...right.slice(rightIndex) ]; // combine the result, then left and finally right, in that order (ascending)
 	}
 }
 
