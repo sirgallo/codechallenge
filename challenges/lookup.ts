@@ -1,6 +1,7 @@
 import { Runner, cliRunner } from '../cli.js';
+import { User } from '../types.js';
 import { LogProvider } from '../core/log/LogProvider.js';
-import { LookupData, User } from '../data/lookup.data.js';
+import { LookupData } from '../data/lookup.data.js';
 
 
 export class LookupTable { // this is a hash table implementation

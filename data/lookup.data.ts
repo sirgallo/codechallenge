@@ -1,12 +1,8 @@
-export interface User {
-	name: string;
-	email: string;
-	age: number;
-	phone: string;
-}
+import { User } from '../types.js';
+
 
 export class LookupData {
-	static users = () => {
+	static users = (): User[] => {
 		return [
 			{
 				name: 'John Doe',

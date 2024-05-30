@@ -18,3 +18,11 @@ export type Knapsack = {
 	values: number[];
 	capacity: number;
 };
+
+
+export interface User {
+	name: string;
+	email: string;
+	age: number;
+	phone: string;
+}

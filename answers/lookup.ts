@@ -1,5 +1,6 @@
 import { Runner, cliRunner } from '../cli.js';
-import { LookupData, User } from '../data/lookup.data.js';
+import { User } from '../types.js';
+import { LookupData } from '../data/lookup.data.js';
 
 
 
