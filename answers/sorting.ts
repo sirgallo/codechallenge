@@ -19,10 +19,9 @@ export class MergeSort {
 	// this section should sort + merge the incoming arrays (left and right)
 	private static merge(left: number[], right: number[]): number[] {
 		const result: number[] = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
-
-    while (leftIndex < left.length && rightIndex < right.length) {
+		let leftIndex = 0;
+		let rightIndex = 0;
+		while (leftIndex < left.length && rightIndex < right.length) {
 			if (left[leftIndex] < right[rightIndex]) {
 				result.push(left[leftIndex]);
 				leftIndex++;
@@ -32,11 +31,7 @@ export class MergeSort {
 			}
     }
 
-    return [ 
-			...result,
-			...left.slice(leftIndex),
-			...right.slice(rightIndex)
-		];
+    return [ ...result, ...left.slice(leftIndex), ...right.slice(rightIndex) ];
 	}
 }
 
