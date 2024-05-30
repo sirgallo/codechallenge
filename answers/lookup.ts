@@ -27,7 +27,7 @@ class LookupTable { // this is a hash table implementation
 	}
 
 	private __hash(data: string): number { // simple hash function, get char code at each char and then modulo by size of array (remainder is the index)
-		return data.split('').reduce((res, char) => {
+		return data.split('').reduce((res, char) => { // first split the data on each character and then reduce it to the sum of all of the character codes
 			res += char.charCodeAt(0);
 			return res;
 		}, 0) % this.__size;
