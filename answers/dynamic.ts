@@ -121,6 +121,7 @@ export class Knapsack {
 	}
 }
 
+
 export class DynamicRunner extends Runner {
 	private __zLog = new LogProvider(DynamicRunner.name);
 	constructor() { super(); }
@@ -139,6 +140,7 @@ export class DynamicRunner extends Runner {
 		return true;
 	}
 }
+
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   await cliRunner({ runner: new DynamicRunner() });

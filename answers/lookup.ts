@@ -4,7 +4,7 @@ import { LookupData } from '../data/lookup.data.js';
 
 
 
-// ========================================= DATA STRUCTURE FROM SCRATCH
+// DATA STRUCTURE FROM SCRATCH
 
 
 class LookupTable { // this is a hash table implementation
@@ -37,9 +37,6 @@ class LookupTable { // this is a hash table implementation
 		}, 0) % this.__size;
 	}
 }
-
-
-// =========================================
 
 
 export class Lookup extends Runner {

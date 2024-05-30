@@ -11,7 +11,6 @@ export class BinarySearch {
 }
 
 
-
 export class Search extends Runner {
   constructor() { super(); }
 
@@ -25,7 +24,6 @@ export class Search extends Runner {
 		return true;
 	}
 }
-
 
 
 if (import.meta.url === `file://${process.argv[1]}`) {

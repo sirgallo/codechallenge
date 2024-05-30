@@ -62,7 +62,6 @@ export class BinarySearch {
 }
 
 
-
 export class Search extends Runner {
   constructor() { super(); }
 

@@ -1,6 +1,7 @@
 import { Runner, cliRunner } from '../cli.js';
 import { SortingData } from '../data/sorting.data.js';
 
+
 export class MergeSort {
 	constructor() {}
 
