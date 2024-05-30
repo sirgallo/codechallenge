@@ -78,22 +78,22 @@ QuickSort:
 
 	sort recursively:
 					pivot
-					[4]
+					 [4]
 						|
 		[ 3  2  1 ]  [ 8  5  6  7 ]
 
 					pivot
-					[3]
+					 [3]
 						|
 			[ 2  1 ]  [ 5  6  7 ]  [ 8 ]
 
 					pivot
-					[2]
+					 [2]
 						|
 		[ 1 ] [1] [ 5  6  7 ] [ 8 ]
 
 					pivot
-					[6] 
+					 [6] 
 						|
 		[ 5 ] [ 7 ] [ 8 ]
 
