@@ -17,24 +17,27 @@ Each challenge will extend the base runner class, located in [cli](cli.ts).
 Runners are expected to have the following format (loosely):
 
 ```ts
-import { Runner, cliRunner } from '../cli.js';
+import { Runner, cliRunner } from '../cli.js'; // import the Runner class and cliRunner
 
 
 class MyCode extends Runner {
   constructor() { super() }
 
-  async run(): Promise<boolean> {
-    // main handler, executed on start in base class, implement test logic here
-    return true;
+  async run(): Promise<boolean> { // main handler, executed on start in base class, implement test logic here
+    return this.__myMethod();
   }
 
-  // any additional methods can be added as private members
+	// any additional methods can be added as private members
+
+  private __myMethod(): boolean {
+    const sum = 2 + 2;
+    return sum === 4;
+  }
 }
 
-
-cliRunner({  // use the included utility to run the above processor
-  run: new MyCode()
-});
+if (import.meta.url === `file://${process.argv[1]}`) {	// use this to tell node.js to only run if the file is being executed
+	await cliRunner({ run: new MyCode() }); // execute the runner
+}
 ```
 
 Runners, when executed, will perform the following:

@@ -6,7 +6,7 @@ export class SortingData {
 		return SortingData.generateRandomNumbers(100);
 	}
 
-	private static generateRandomNumbers = (count: number, min = 0, max = 100) => { // function to generate random numbers
+	static generateRandomNumbers = (count: number, min = 0, max = 100) => { // function to generate random numbers
 		const randomNumbers: number[] = [];
 		for (let i = 0; i < count; i++) {
 			const randomBuffer = randomBytes(4);

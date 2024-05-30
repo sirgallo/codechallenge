@@ -1,4 +1,3 @@
-import { compare, hash } from 'bcrypt';
 import { BinaryToTextEncoding,  createHash, randomBytes } from 'crypto';
 
 import { LogProvider } from '../log/LogProvider.js';
@@ -19,14 +18,6 @@ export class CryptoUtil {
       throw err;
     }
   };
-
-  static hashPassword = async (password: string, opts: { saltRounds: number }): Promise<string> => {
-    return hash(password, opts.saltRounds); // for salt rounds, higher number will result in higher security 
-  }
-  
-  static verifyPassword = async (password: string, hash: string): Promise<boolean> =>{
-    return await compare(password, hash);
-  }
 
   static generateSecureUUID = () => {
     const bytes = randomBytes(16);

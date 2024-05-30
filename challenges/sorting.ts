@@ -19,6 +19,17 @@ export class MergeSort {
 }
 
 
+export class QuickSort {
+	constructor() {}
+
+	// this section should recursively split the elements at a pivot point and sort around this pivot
+	static sort(elements: number[]): number[] {
+		// TODO
+		return [];
+	}
+}
+
+
 export class Sorting extends Runner {
   constructor() { super(); }
 
@@ -26,13 +37,17 @@ export class Sorting extends Runner {
 		const mockData = SortingData.list();
 		console.log('unsorted data:', mockData);
 
-		// sort here and log the sorted results after
+		const sorted1 = MergeSort.sort(mockData); // merge sort
+		console.log('sorted (merge sort):', sorted1);
+
+		const sorted2 = QuickSort.sort(mockData); // quick sort
+		console.log('sorted (quick sort):', sorted2);
 		
 		return true;
 	}
 }
 
 
-await cliRunner({
-	runner: new Sorting()
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+	await cliRunner({ runner: new Sorting() });
+}

@@ -9,6 +9,7 @@
   "author": "Sir Gallo",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^5.3.0",
     "lodash": "^4.17.21",
     "typescript": "^5.4.5"
   },

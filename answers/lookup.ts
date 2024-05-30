@@ -1,5 +1,4 @@
 import { Runner, cliRunner } from '../cli.js';
-import { LogProvider } from '../core/log/LogProvider.js';
 import { LookupData, User } from '../data/lookup.data.js';
 
 
@@ -43,7 +42,6 @@ class LookupTable { // this is a hash table implementation
 
 
 export class Lookup extends Runner {
-	private __zLog = new LogProvider(Lookup.name);
 	constructor() { super(); }
 
 	async run() { // run both
@@ -99,6 +97,6 @@ export class Lookup extends Runner {
 }
 
 
-cliRunner({
-	runner: new Lookup()
-});
+if (import.meta.url === `file://${process.argv[1]}`) {
+	await cliRunner({ runner: new Lookup() });
+}
