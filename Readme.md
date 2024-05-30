@@ -12,9 +12,7 @@ Each data file should export a data class that includes static methods with asso
 
 `./challenges` handles executing challenges.
 
-`<name-of-runner>.sight.io.runner.ts`
-
-Each runner will extend the base runner class, located in [sight.io.runner](sight.io.runner.ts).
+Each challenge will extend the base runner class, located in [cli](cli.ts).
 
 Runners are expected to have the following format (loosely):
 
