@@ -19,7 +19,7 @@ export class DynamicRunner extends Runner {
 	private __zLog = new LogProvider(DynamicRunner.name);
 	constructor() { super(); }
 
-	async run() { // Solve the knapsack problem with the mock data
+	async run() { // solve the knapsack problem with the mock data
 		this.__knapsack();
 		return true;
 	}
